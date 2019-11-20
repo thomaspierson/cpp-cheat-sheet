@@ -77,6 +77,8 @@
 
 **Example Code**
 ```c++
+#include <vector>
+
 std::vector<int> v;
 
 //---------------------------------
@@ -97,7 +99,7 @@ int tail = v.back();        // tail
 unsigned int size = v.size();
 
 // Iterate
-for(std::vector<int>::iterator it = v.begin(); it != v.end(); it++) {
+for(auto it = v.begin(); it != v.end(); ++it) {
     std::cout << *it << std::endl;
 }
 
@@ -144,7 +146,7 @@ int tail = d.back();        // tail
 unsigned int size = d.size();
 
 // Iterate
-for(std::deque<int>::iterator it = d.begin(); it != d.end(); it++) {
+for(auto it = d.begin(); it != d.end(); ++it) {
     std::cout << *it << std::endl;
 }
 
@@ -200,7 +202,7 @@ int tail = l.back();                                            // tail
 unsigned int size = l.size();
 
 // Iterate
-for(std::list<int>::iterator it = l.begin(); it != l.end(); it++) {
+for(auto it = l.begin(); it != l.end(); ++it) {
     std::cout << *it << std::endl;
 }
 
@@ -278,13 +280,18 @@ l.reverse();
 
 **Example Code**
 ```c++
+#include <map>
+
 std::map<std::string, std::string> m;
 
 //---------------------------------
 // General Operations
 //---------------------------------
 
-// Insert
+// Insert (C++11)
+m.insert({"key", "value"});
+
+// Insert (detailed)
 m.insert(std::pair<std::string, std::string>("key", "value"));
 
 // Access by key
@@ -294,7 +301,7 @@ std::string value = m.at("key");
 unsigned int size = m.size();
 
 // Iterate
-for(std::map<std::string, std::string>::iterator it = m.begin(); it != m.end(); it++) {
+for(auto it = m.begin(); it != m.end(); ++it) {
     std::cout << *it << std::endl;
 }
 
@@ -315,10 +322,12 @@ bool exists = (m.find("key") != m.end());
 unsigned int count = m.count("key");
 ```
 -------------------------------------------------------
-### 1.6 Set `std::set`
+### 1.6 Set `std::set` or `std::unordered_set`
 **Use for**
-* Removing duplicates
+* Storing presence/absence state of a value
+* Finding/Removing duplicates
 * Ordered dynamic storage
+* Or unordered 
 
 **Do not use for**
 * Simple storage
@@ -327,7 +336,7 @@ unsigned int count = m.count("key");
 **Notes**
 * Sets are often implemented with binary search trees
 
-**Time Complexity**
+**Time Complexity `std::set`**
 
 | Operation    | Time Complexity |
 |--------------|-----------------|
@@ -335,8 +344,20 @@ unsigned int count = m.count("key");
 | Remove       |     `O(log(n))` |
 | Find         |     `O(log(n))` |
 
+
+**Time Complexity `std::unordered_set`**
+
+| Operation           | Time Complexity |
+|---------------------|-----------------|
+| Insert              |          `O(1)` |
+| Access by Key       |          `O(1)` |
+| Remove by Key       |          `O(1)` |
+| Find/Remove Value   |              -- |
+
 **Example Code**
 ```c++
+#include <set>
+
 std::set<int> s;
 
 //---------------------------------
@@ -350,7 +371,7 @@ s.insert(20);
 unsigned int size = s.size();
 
 // Iterate
-for(std::set<int>::iterator it = s.begin(); it != s.end(); it++) {
+for(auto it = s.begin(); it != s.end(); ++it) {
     std::cout << *it << std::endl;
 }
 
