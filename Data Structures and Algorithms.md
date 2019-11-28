@@ -6,6 +6,9 @@
 
 - [C++ Data Structures and Algorithms Cheat Sheet](#c-data-structures-and-algorithms-cheat-sheet)
 	- [Table of Contents](#table-of-contents)
+	- [0.0 Basic types](#00-basic-types)
+		- [0.1 Arithmetic types](#01-arithmetic-types)
+		- [0.2 C-style arrays](#02-cstyle-arrays)
 	- [1.0 Data Structures](#10-data-structures)
 		- [1.1 Overview](#11-overview)
 		- [1.2 Vector `std::vector`](#12-vector-stdvector)
@@ -36,8 +39,91 @@
 
 <!-- /TOC -->
 
+## 0.0 Built-in types
+### 0.1 Arithmetic types
+
+| data type              | size(in bytes) | range                 |
+|------------------------|----------------|-----------------------|
+| bool                   |	NA        | 	true to false     |
+| short int              |	2         | 	-32,768 to 32,767 |
+| unsigned short int     |	2         | 	0 to 65,535       |
+| unsigned int           | 	4         |	0 to 4,294,967,295 |
+| int                    | 	4         |	-2,147,483,648 to 2,147,483,647 |
+| long int               |	4         | 	-2,147,483,648 to 2,147,483,647 |
+| unsigned long int      |	4         | 	0 to 4,294,967,295 |
+| long long int          |	8         | 	-(2^63) to (2^63)-1 |
+| unsigned long long int |	8         | 	0 to 18,446,744,073,709,551,615 |
+| float                  |	4         | 	 |
+| double                 |	8         | |
+| long double            |	12        | |
+| signed char            |	1         | 	-128 to 127 |
+| unsigned char          |	1         | 	0 to 255 |
+| wchar_t                |	2 or 4    |	1 wide character |
+
+**Example Code**
+```c++
+
+// Initialization with default values of builtin types
+char c {}; // c = 0
+int i {}; // i = 0
+float f {}; // f = 0.0f
+double d {}; // d = 0.0
+bool b {}; // b = false
+int* p {}; // p = nullptr
+
+// Initialization with specific values
+char c {'x'};   // c = 'x'
+int i {99};    // i = 99
+float f {3.14f}; // f = 3.14f
+double d {1.23};  // d = 1.23
+bool b {true};  // b = true
+int* p {&i};    // p = &i
+
+```
+
+### 0.2 C-style arrays
+
+**Use for**
+* No trade-off for performance over flexibility
+* Fixed size container 
+* Quick lookups by index
+
+**DO NO USE** in modern C++ implementation except for special low level use case.
+
+**Example Code**
+```c++
+
+// Init array values
+int i_arr[5] {};                // [0,   0, 0, 0, 0]
+int j_arr[] {99, 10, 3};        // [99, 10, 3]
+int k_arr[5] {99, 10, 3};       // [99, 10, 3, 0, 0]
+int m_arr[5] {99, 10, 3, 5, 7}; // [99, 10, 3, 5, 7]
+string s_arr[3] {"hi", "bye"}; // ["hi", "bye", ""]
+
+//---------------------------------
+// General Operations
+//---------------------------------
+
+// Access index
+int value = arr[index];    // index
+
+// Size -> no safe way to get the size of an array, you have to save the size separatly
+size_t size = 10;
+int arr[size];
+
+// Iterate
+for(size_t i = 0; i != size; i++) {
+    std::cout << arr[i] << std::endl;
+}
+
+// Safer for total traversal
+for(auto e : arr) {
+    std::cout << e << std::endl;
+}
+```
 
 ## 1.0 Data Structures
+
 ### 1.1 Overview
 
 ![Legend](General/Legend.png)
@@ -48,7 +134,9 @@
 
 ![DataStructureSelection](General/Data%20Structures%20Selection.png "Data Structures Selection")
 -------------------------------------------------------
+
 ### 1.2 Vector `std::vector`
+
 **Use for**
 * Simple storage
 * Adding but not deleting
@@ -80,6 +168,7 @@
 #include <vector>
 
 std::vector<int> v;
+std::vector<int> v{4, 5, 6, 3, 55, 67, 2};
 
 //---------------------------------
 // General Operations
@@ -90,10 +179,13 @@ v.insert(v.begin(), value);             // head
 v.insert(v.begin() + index, value);     // index
 v.push_back(value);                     // tail
 
-// Access head, index, tail
+// Access/modify head, index, tail
 int head = v.front();       // head
-int value = v.at(index);    // index
+v.front() = 2;
 int tail = v.back();        // tail
+v.back() = 3;
+int value = v.at(index);    // index
+v.at(index) = -1;
 
 // Size
 unsigned int size = v.size();
