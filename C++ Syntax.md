@@ -49,6 +49,20 @@ Since the C++ language varies so heavily between versions (e.g. C++0x, C++11, C+
 
 ## 1.0 C++ Classes
 ### 1.1 Class Syntax
+
+```c++
+class Point { 
+private: 
+  double x, y; 
+  
+public: 
+  // Non-default Constructor & default Constructor 
+  Point() = default;
+  Point (double px, double py) : x(px), y(py) { 
+  } 
+}; 
+```
+
 #### 1.1.1 Class Declaration (`.h` file)
 Here's a simple class representing a polygon, a shape with any number of sides.
 
