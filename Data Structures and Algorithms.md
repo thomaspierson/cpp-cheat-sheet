@@ -22,7 +22,7 @@
 		- [1.10 Heap `std::priority_queue`](#110-heap-stdpriority_queue)
 	- [2.0 Trees](#20-trees)
 		- [2.1 Binary Tree](#21-binary-tree)
-		- [2.2 Binary Search Tree](#21-binary-search-tree)
+		- [2.2 Binary Search Tree](#22-binary-search-tree)
 		- [2.3 Balanced Trees](#23-balanced-trees)
 		- [2.4 Binary Search](#24-binary-search)
 		- [2.5 Depth-First Search](#25-depth-first-search)
