@@ -9,7 +9,7 @@
 	- [0.0 Basic types](#00-basic-types)
 		- [0.1 Arithmetic types](#01-arithmetic-types)
 		- [0.2 C-style arrays](#02-cstyle-arrays)
-	- [1.0 Data Structures](#10-data-structures)
+	- [1.0 Containers types](#10-containers-types)
 		- [1.1 Overview](#11-overview)
 		- [1.2 Vector `std::vector`](#12-vector-stdvector)
 		- [1.3 Deque `std::deque`](#13-deque-stddeque)
@@ -123,7 +123,7 @@ for(auto e : arr) {
 }
 ```
 
-## 1.0 Data Structures
+## 1.0 Containers types
 
 ### 1.1 Overview
 
@@ -593,15 +593,61 @@ p.pop();
 
 ![MaxHeap](General/MaxHeap.png)
 -------------------------------------------------------
+
 ## 2.0 Trees
+
 ### 2.1 Binary Tree
+
 * A binary tree is a tree with at most two (2) child nodes per parent
 * Binary trees are commonly used for implementing `O(log(n))` operations for ordered maps, sets, heaps, and binary search trees
-* Binary trees are **sorted** in that nodes with values greater than their parents are inserted to the **right**, while nodes with values less than their parents are inserted to the **left**
 
-**Binary Search Tree**
+**Example Code**
+```c++
+struct Node {
+  int val{ 0 };
+  Node* left{ nullptr };
+  Node* right{ nullptr };
+};
+
+// Inorder traversal iterative
+void inorderList(Node* node) {
+  stack<Node*> st;
+  while (node != nullptr || !st.empty()) {
+    if(node != nullptr) {
+      st.push(node);
+      node = node->left;
+    }
+    else {
+      cout << st.top()->val << " ";
+      node = st.top()->right;
+      st.pop();
+    }
+  }
+}
+
+// Initialization of a tree
+Node* root = new Node{8,
+    new Node{3,
+      new Node{1},
+      new Node{6}
+    },
+    new Node{10,
+      new Node{14,
+        new Node{10},
+        new Node{11}
+      },
+      new Node{9}
+    }
+  };
+```
+
+### 2.2 Binary Search Tree
+
+* Binary Search Trees are **sorted** binary tree in that nodes with values greater than their parents are inserted to the **right**, while nodes with values less than their parents are inserted to the **left**
 
 ![BinarySearchTree](General/BinarySearchTree.png)
+
+
 -------------------------------------------------------
 ### 2.2 Balanced Trees
 * Balanced trees are a special type of tree which maintains its balance to ensure `O(log(n))` operations
