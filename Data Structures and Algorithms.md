@@ -649,7 +649,7 @@ Node* root = new Node{8,
 
 
 -------------------------------------------------------
-### 2.2 Balanced Trees
+### 2.3 Balanced Trees
 * Balanced trees are a special type of tree which maintains its balance to ensure `O(log(n))` operations
 * When trees are not balanced the benefit of `log(n)` operations is lost due to the highly vertical structure
 * Examples of balanced trees:
@@ -657,7 +657,7 @@ Node* root = new Node{8,
     * Red-Black Trees
 
 -------------------------------------------------------
-### 2.3 Binary Search
+### 2.4 Binary Search
 **Idea:**
 1. If current element, return
 2. If less than current element, look left
@@ -684,7 +684,7 @@ Node* root = new Node{8,
 
 ![BinarySearch](Searching/Animations/Binary%20Search.gif "Binary Search")
 -------------------------------------------------------
-### 2.4 Depth-First Search
+### 2.5 Depth-First Search
 **Idea:**
 1. Start at root node
 2. Recursively search all adjacent nodes and mark them as searched
@@ -704,7 +704,7 @@ Node* root = new Node{8,
 
 ![DepthFirstSearch](Searching/Animations/Depth-First%20Search.gif "Depth-First Search")
 -------------------------------------------------------
-### 2.5 Breadth-First Search
+### 2.6 Breadth-First Search
 **Idea:**
 1. Start at root node
 2. Search neighboring nodes first before moving on to next level
