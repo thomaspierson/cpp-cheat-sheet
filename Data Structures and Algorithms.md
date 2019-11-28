@@ -39,7 +39,7 @@
 
 <!-- /TOC -->
 
-## 0.0 Built-in types
+## 0.0 Basic types
 ### 0.1 Arithmetic types
 
 | data type              | size(in bytes) | range                 |
