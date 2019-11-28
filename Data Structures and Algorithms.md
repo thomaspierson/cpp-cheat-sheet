@@ -60,6 +60,7 @@
 | unsigned char          |	1         | 	0 to 255 |
 | wchar_t                |	2 or 4    |	1 wide character |
 
+
 **Example Code**
 ```c++
 
